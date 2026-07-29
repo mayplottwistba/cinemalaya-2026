@@ -1,13 +1,15 @@
 /* =========================================================
-   FESTIVAL SETTINGS
+   CINEMALAYA DATA
 ========================================================= */
 
+// Calendar range
 const FESTIVAL_START =
     "2026-08-08";
 
 const FESTIVAL_END =
     "2026-08-17";
 
+// Input in dropdown
 const FESTIVAL_START_I =
     "2026-08-07";
 
@@ -23,11 +25,6 @@ const CALENDAR_END_HOUR =
 
 const HOUR_HEIGHT =
     60;
-
-
-/* =========================================================
-   FIXED FESTIVAL FILMS
-========================================================= */
 
 const movies = [
     {
@@ -1812,17 +1809,7 @@ const movies = [
 
 ];
 
-
-/* =========================================================
-   STATE
-========================================================= */
-
 let scheduledScreenings = [];
-
-
-/* =========================================================
-   DOM ELEMENTS
-========================================================= */
 
 const moviesGrid =
     document.getElementById(
@@ -1901,11 +1888,7 @@ const calendar =
         "calendar"
     );
 
-
-/* =========================================================
-   DATE RESTRICTION
-========================================================= */
-
+// Restrict dates (8/7 - 8/16)
 dateInput.min =
     FESTIVAL_START_I;
 
@@ -1913,28 +1896,15 @@ dateInput.max =
     FESTIVAL_END_I;
 
 
-/* =========================================================
-   INITIALIZE
-========================================================= */
-
 renderMovies();
-
 populateMovieSelect();
-
 renderScreenings();
-
 renderCalendar();
 
 
-/* =========================================================
-   MOVIE CARDS
-========================================================= */
 
 function renderMovies() {
-
     moviesGrid.innerHTML = "";
-
-
     movies.forEach(
         (movie, index) => {
 
@@ -1947,9 +1917,7 @@ function renderMovies() {
             card.className =
                 "movie-card";
 
-
             card.innerHTML = `
-
                 <div
                     class="movie-color"
                     style="
@@ -1957,57 +1925,30 @@ function renderMovies() {
                     "
                 ></div>
 
-
                 <div class="movie-card-content">
-
-
                     <div class="movie-card-info">
-
-
                         <div class="movie-number">
-
                             FILM
                             ${String(
                                 index + 1
                             ).padStart(2, "0")}
-
                         </div>
-
-
                         <div class="movie-title">
-
                             ${movie.title}
-
                         </div>
-
-
                         <div class="movie-director">
-
                             DIRECTOR
-
                         </div>
-
-
                         <div class="movie-director-name">
-
                             ${movie.director}
-
                         </div>
-
-
                         <div class="movie-runtime">
-
                             ${movie.runtime} MINUTES
-
                         </div>
-
-
                     </div>
 
 
                     <div class="movie-poster-wrap">
-
-
                         <img
                             class="movie-poster"
                             src="${movie.poster}"
@@ -2017,23 +1958,9 @@ function renderMovies() {
                                 this.parentElement.classList.add('poster-missing');
                             "
                         >
-
-
-                        <div class="poster-placeholder">
-
-                            NO POSTER
-
-                        </div>
-
-
                     </div>
-
-
                 </div>
-
             `;
-
-
             moviesGrid.appendChild(
                 card
             );
@@ -2043,172 +1970,104 @@ function renderMovies() {
 
 }
 
-
-/* =========================================================
-   MOVIE DROPDOWN
-========================================================= */
-
 function populateMovieSelect() {
-
     movieSelect.innerHTML = `
-
         <option value="">
             Select Film
         </option>
-
     `;
-
-
     movies.forEach(
         movie => {
-
             const option =
                 document.createElement(
                     "option"
                 );
-
-
             option.value =
                 movie.id;
-
-
             option.textContent =
                 movie.title;
-
-
             movieSelect.appendChild(
                 option
             );
-
         }
     );
-
 }
-
-
-/* =========================================================
-   MOVIE CHANGED
-========================================================= */
 
 movieSelect.addEventListener(
     "change",
     function() {
 
         resetSchedulingFields();
-
         updateRuntime();
-
         updateCinemaOptions();
-
         updateAvailableTimes();
 
     }
 );
 
-
-/* =========================================================
-   DATE CHANGED
-========================================================= */
-
 dateInput.addEventListener(
     "change",
     function() {
-
         const selected =
             dateInput.value;
-
 
         if (
             selected < FESTIVAL_START_I ||
             selected > FESTIVAL_END_I
         ) {
-
             dateInput.value = "";
-
             resetSchedulingFields();
-
             alert(
                 "Please select a festival date between August 7 and August 16, 2026."
             );
-
+           // restrict dates
             return;
 
         }
 
-
         resetTimeOnly();
-
         updateCinemaOptions();
-
         updateAvailableTimes();
 
     }
 );
-
-
-/* =========================================================
-   CINEMA CHANGED
-========================================================= */
 
 cinemaSelect.addEventListener(
     "change",
     function() {
-
         resetTimeOnly();
-
         updateAvailableTimes();
-
     }
 );
 
 
-/* =========================================================
-   START TIME CHANGED
-========================================================= */
-
 startSelect.addEventListener(
     "change",
     function() {
-
         updateEndTime();
-
         updateAddButton();
 
     }
 );
 
-
-/* =========================================================
-   RESET FIELDS
-========================================================= */
-
 function resetSchedulingFields() {
-
     cinemaSelect.innerHTML = `
-
         <option value="">
             Select Cinema
         </option>
 
     `;
-
     cinemaSelect.disabled =
         true;
-
-
     resetTimeOnly();
-
 
     availabilityDisplay.textContent =
         "Select a film and date.";
 
 }
 
-
 function resetTimeOnly() {
-
     startSelect.innerHTML = `
-
         <option value="">
             Select available time
         </option>
@@ -2217,31 +2076,17 @@ function resetTimeOnly() {
 
     startSelect.disabled =
         true;
-
-
     endDisplay.textContent =
         "—";
-
-
     updateAddButton();
-
 }
 
-
-/* =========================================================
-   RUNTIME
-========================================================= */
-
+// calculate etc of film based on runtime
 function updateRuntime() {
-
     const movie =
         getSelectedMovie();
-
-
     if (!movie) {
-
         runtimeDisplay.innerHTML = `
-
             <span>
                 Runtime
             </span>
@@ -2249,16 +2094,10 @@ function updateRuntime() {
             <strong>
                 —
             </strong>
-
         `;
-
         return;
-
     }
-
-
     runtimeDisplay.innerHTML = `
-
         <span>
             Runtime
         </span>
@@ -2272,52 +2111,34 @@ function updateRuntime() {
 }
 
 
-/* =========================================================
-   CINEMA OPTIONS
-========================================================= */
-
 function updateCinemaOptions() {
-
     const movie =
         getSelectedMovie();
-
 
     const date =
         dateInput.value;
 
-
     cinemaSelect.innerHTML = `
-
         <option value="">
             Select Cinema
         </option>
-
     `;
-
 
     cinemaSelect.disabled =
         true;
-
-
     if (
         !movie ||
         !date
     ) {
-
         availabilityDisplay.textContent =
             "Select a film and date.";
-
         return;
-
     }
-
-
     const available =
         movie.availability.filter(
             item =>
                 item.date === date
         );
-
 
     if (
         available.length === 0
@@ -2325,12 +2146,9 @@ function updateCinemaOptions() {
 
         availabilityDisplay.textContent =
             "This film has no cinema availability on this date.";
-
         return;
-
     }
-
-
+   
     const cinemas =
         [
             ...new Set(
@@ -2341,7 +2159,6 @@ function updateCinemaOptions() {
             )
         ];
 
-
     cinemas.forEach(
         cinema => {
 
@@ -2349,20 +2166,16 @@ function updateCinemaOptions() {
                 document.createElement(
                     "option"
                 );
-
-
+           
             option.value =
                 cinema;
-
 
             option.textContent =
                 cinema;
 
-
             cinemaSelect.appendChild(
                 option
             );
-
         }
     );
 
@@ -2370,48 +2183,33 @@ function updateCinemaOptions() {
     cinemaSelect.disabled =
         false;
 
-
     availabilityDisplay.textContent =
         `${cinemas.length} cinema option${cinemas.length === 1 ? "" : "s"} available for this film on this date.`;
 
 }
 
-
-/* =========================================================
-   AVAILABLE TIMES
-========================================================= */
-
+// restrict overlaps
 function updateAvailableTimes() {
-
     const movie =
         getSelectedMovie();
-
 
     const date =
         dateInput.value;
 
-
     const cinema =
         cinemaSelect.value;
-
-
     startSelect.innerHTML = `
-
         <option value="">
             Select available time
         </option>
 
     `;
 
-
     startSelect.disabled =
         true;
 
-
     endDisplay.textContent =
         "—";
-
-
     if (
         !movie ||
         !date ||
@@ -2419,11 +2217,9 @@ function updateAvailableTimes() {
     ) {
 
         updateAddButton();
-
         return;
 
     }
-
 
     const availability =
         movie.availability.find(
@@ -2432,18 +2228,12 @@ function updateAvailableTimes() {
                 item.cinema === cinema
         );
 
-
     if (!availability) {
-
         availabilityDisplay.textContent =
             "No screening times available.";
-
         updateAddButton();
-
         return;
-
     }
-
 
     const availableTimes =
         availability.times.filter(
@@ -2456,20 +2246,15 @@ function updateAvailableTimes() {
                 )
         );
 
-
     if (
         availableTimes.length === 0
     ) {
-
         availabilityDisplay.textContent =
             "All available times are already booked.";
-
         updateAddButton();
-
         return;
 
     }
-
 
     availableTimes.forEach(
         time => {
@@ -2478,16 +2263,12 @@ function updateAvailableTimes() {
                 document.createElement(
                     "option"
                 );
-
-
             option.value =
                 time;
 
-
             option.textContent =
                 formatTime(time);
-
-
+           
             startSelect.appendChild(
                 option
             );
@@ -2495,23 +2276,15 @@ function updateAvailableTimes() {
         }
     );
 
-
     startSelect.disabled =
         false;
-
 
     availabilityDisplay.textContent =
         `${availableTimes.length} available screening time${availableTimes.length === 1 ? "" : "s"} for ${cinema}.`;
 
-
     updateAddButton();
 
 }
-
-
-/* =========================================================
-   CHECK WHETHER TIME IS AVAILABLE
-========================================================= */
 
 function isTimeAvailable(
     movie,
@@ -2530,68 +2303,50 @@ function isTimeAvailable(
         newStart +
         movie.runtime;
 
-
     const conflicts =
         scheduledScreenings.some(
             screening => {
-
                 if (
                     screening.date !== date
                 ) {
-
                     return false;
-
                 }
-
 
                 if (
                     screening.cinema !== cinema
                 ) {
-
                     return false;
 
                 }
-
 
                 const existingStart =
                     timeToMinutes(
                         screening.start
                     );
-
-
+               
                 const existingEnd =
                     timeToMinutes(
                         screening.end
                     );
 
-
                 return (
                     newStart < existingEnd &&
                     newEnd > existingStart
                 );
-
             }
         );
 
-
     return !conflicts;
-
 }
 
-
-/* =========================================================
-   END TIME
-========================================================= */
-
+// auto end time
 function updateEndTime() {
 
     const movie =
         getSelectedMovie();
 
-
     const start =
         startSelect.value;
-
 
     if (
         !movie ||
@@ -2600,22 +2355,17 @@ function updateEndTime() {
 
         endDisplay.textContent =
             "—";
-
         return;
 
     }
-
-
     const startMinutes =
         timeToMinutes(
             start
         );
 
-
     const endMinutes =
         startMinutes +
         movie.runtime;
-
 
     endDisplay.textContent =
         formatMinutes(
@@ -2623,11 +2373,6 @@ function updateEndTime() {
         );
 
 }
-
-
-/* =========================================================
-   ADD BUTTON
-========================================================= */
 
 function updateAddButton() {
 
@@ -2641,33 +2386,24 @@ function updateAddButton() {
 
 }
 
-
-/* =========================================================
-   SUBMIT SCREENING
-========================================================= */
-
+// add screening
 screeningForm.addEventListener(
     "submit",
     function(event) {
 
         event.preventDefault();
 
-
         const movie =
             getSelectedMovie();
-
 
         const date =
             dateInput.value;
 
-
         const cinema =
             cinemaSelect.value;
 
-
         const start =
             startSelect.value;
-
 
         if (
             !movie ||
@@ -2677,9 +2413,7 @@ screeningForm.addEventListener(
         ) {
 
             return;
-
         }
-
 
         if (
             !isTimeAvailable(
@@ -2693,19 +2427,15 @@ screeningForm.addEventListener(
             alert(
                 "That cinema is already occupied during this screening."
             );
-
             updateAvailableTimes();
-
             return;
 
         }
-
 
         const startMinutes =
             timeToMinutes(
                 start
             );
-
 
         const endMinutes =
             startMinutes +
@@ -2748,42 +2478,27 @@ screeningForm.addEventListener(
 
         };
 
-
         scheduledScreenings.push(
             screening
         );
 
-
         renderScreenings();
-
         renderCalendar();
-
-
         updateCinemaOptions();
-
         updateAvailableTimes();
-
         updateEndTime();
 
     }
 );
 
-
-/* =========================================================
-   RENDER SCREENING LIST
-========================================================= */
-
+// summary of screenings - show in table
 function renderScreenings() {
 
     screeningsList.innerHTML = "";
-
-
     if (
         scheduledScreenings.length === 0
     ) {
-
         screeningsList.innerHTML = `
-
             <div class="empty-state">
                 NO SCREENINGS YET
             </div>
@@ -2791,38 +2506,27 @@ function renderScreenings() {
         `;
 
         return;
-
     }
-
 
     const sorted =
         [...scheduledScreenings]
         .sort(
             (a, b) => {
-
                 const dateCompare =
                     a.date.localeCompare(
                         b.date
                     );
-
-
                 if (
                     dateCompare !== 0
                 ) {
-
                     return dateCompare;
-
                 }
-
-
                 return (
                     timeToMinutes(a.start) -
                     timeToMinutes(b.start)
                 );
-
             }
         );
-
 
     sorted.forEach(
         screening => {
@@ -2832,11 +2536,9 @@ function renderScreenings() {
                     "div"
                 );
 
-
             row.className =
                 "screening-row";
-
-
+           
             row.innerHTML = `
 
                 <div class="screening-movie">
@@ -2844,41 +2546,24 @@ function renderScreenings() {
                     ${screening.title}
 
                 </div>
-
-
                 <div>
-
                     ${formatDate(
                         screening.date
                     )}
-
                 </div>
-
-
                 <div>
-
                     ${screening.cinema}
-
                 </div>
-
-
                 <div class="screening-time">
-
                     ${formatTime(
                         screening.start
                     )}
-
                     —
-
                     ${formatTime(
                         screening.end
                     )}
-
                 </div>
-
-
                 <div>
-
                     <button
                         class="delete-screening"
                         type="button"
@@ -2887,12 +2572,8 @@ function renderScreenings() {
                     >
                         ×
                     </button>
-
                 </div>
-
             `;
-
-
             screeningsList.appendChild(
                 row
             );
@@ -2902,33 +2583,22 @@ function renderScreenings() {
 
 }
 
-
-/* =========================================================
-   DELETE SCREENING
-========================================================= */
-
+// remove screening
 screeningsList.addEventListener(
     "click",
     function(event) {
-
         const button =
             event.target.closest(
                 ".delete-screening"
             );
-
-
         if (!button) {
-
             return;
-
         }
-
-
+       
         const id =
             Number(
                 button.dataset.id
             );
-
 
         scheduledScreenings =
             scheduledScreenings.filter(
@@ -2936,24 +2606,14 @@ screeningsList.addEventListener(
                     screening.id !== id
             );
 
-
         renderScreenings();
-
         renderCalendar();
-
-
         updateCinemaOptions();
-
         updateAvailableTimes();
-
     }
 );
 
-
-/* =========================================================
-   CLEAR ALL
-========================================================= */
-
+// delete all
 clearBtn.addEventListener(
     "click",
     function() {
@@ -2961,67 +2621,40 @@ clearBtn.addEventListener(
         if (
             scheduledScreenings.length === 0
         ) {
-
             return;
-
         }
-
 
         const confirmed =
             confirm(
                 "Clear the entire festival schedule?"
             );
 
-
         if (!confirmed) {
-
             return;
-
         }
 
-
         scheduledScreenings = [];
-
-
         renderScreenings();
-
         renderCalendar();
-
-
         updateCinemaOptions();
-
         updateAvailableTimes();
 
     }
 );
 
-
-/* =========================================================
-   RENDER CALENDAR
-========================================================= */
+// display calendar
 
 function renderCalendar() {
-
     calendar.innerHTML = "";
-
-
     const dates =
         getFestivalDates();
-
-
     const wrapper =
         document.createElement(
             "div"
         );
 
-
     wrapper.className =
         "calendar-grid";
-
-
-    /* ================================================
-       HEADER
-    ================================================= */
 
     const header =
         document.createElement(
@@ -3031,7 +2664,6 @@ function renderCalendar() {
 
     header.className =
         "calendar-header";
-
 
     header.style.gridTemplateColumns =
         `80px repeat(
@@ -3077,15 +2709,9 @@ function renderCalendar() {
         }
     );
 
-
     wrapper.appendChild(
         header
     );
-
-
-    /* ================================================
-       BODY
-    ================================================= */
 
     const body =
         document.createElement(
@@ -3108,11 +2734,6 @@ function renderCalendar() {
         CALENDAR_END_HOUR -
         CALENDAR_START_HOUR +
         1;
-
-
-    /* ================================================
-       TIME COLUMN
-    ================================================= */
 
     const timeColumn =
         document.createElement(
@@ -3160,15 +2781,9 @@ function renderCalendar() {
 
     }
 
-
     body.appendChild(
         timeColumn
     );
-
-
-    /* ================================================
-       DATE COLUMNS
-    ================================================= */
 
     dates.forEach(
         date => {
@@ -3185,7 +2800,6 @@ function renderCalendar() {
 
             column.style.height =
                 `${totalHours * HOUR_HEIGHT}px`;
-
 
             /* HOUR LINES */
 
@@ -3219,24 +2833,11 @@ function renderCalendar() {
             }
 
 
-            /* SCREENINGS */
-
             const dayScreenings =
                 scheduledScreenings.filter(
                     screening =>
                         screening.date === date
                 );
-
-
-            /*
-                IMPORTANT:
-
-                Every screening gets created
-                exactly ONCE.
-
-                Its height represents its
-                runtime.
-            */
 
             dayScreenings.forEach(
                 screening => {
@@ -3248,7 +2849,6 @@ function renderCalendar() {
 
                 }
             );
-
 
             body.appendChild(
                 column
@@ -3268,11 +2868,6 @@ function renderCalendar() {
     );
 
 }
-
-
-/* =========================================================
-   CREATE ONE CALENDAR CARD
-========================================================= */
 
 function createCalendarCard(
     column,
@@ -3313,16 +2908,6 @@ function createCalendarCard(
     const duration =
         endMinutes -
         startMinutes;
-
-
-    /*
-        TOP = starting time
-
-        HEIGHT = runtime
-
-        So a 10:00–11:45 movie
-        becomes ONE 105px card.
-    */
 
     card.style.top =
         `${top}px`;
@@ -3378,23 +2963,13 @@ function createCalendarCard(
 
 }
 
-
-/* =========================================================
-   GET SELECTED MOVIE
-========================================================= */
-
 function getSelectedMovie() {
-
     const id =
         Number(
             movieSelect.value
         );
-
-
     if (!id) {
-
         return null;
-
     }
 
 
@@ -3404,12 +2979,6 @@ function getSelectedMovie() {
     );
 
 }
-
-
-/* =========================================================
-   FESTIVAL DATES
-========================================================= */
-
 function getFestivalDates() {
 
     const dates = [];
@@ -3443,15 +3012,9 @@ function getFestivalDates() {
 
     }
 
-
     return dates;
-
 }
 
-
-/* =========================================================
-   TIME → MINUTES
-========================================================= */
 
 function timeToMinutes(
     time
@@ -3472,11 +3035,6 @@ function timeToMinutes(
     );
 
 }
-
-
-/* =========================================================
-   MINUTES → TIME
-========================================================= */
 
 function minutesToTime(
     totalMinutes
@@ -3500,11 +3058,6 @@ function minutesToTime(
 
 }
 
-
-/* =========================================================
-   FORMAT TIME
-========================================================= */
-
 function formatTime(
     time
 ) {
@@ -3520,11 +3073,6 @@ function formatTime(
     );
 
 }
-
-
-/* =========================================================
-   FORMAT MINUTES
-========================================================= */
 
 function formatMinutes(
     totalMinutes
@@ -3567,10 +3115,6 @@ function formatMinutes(
 }
 
 
-/* =========================================================
-   FORMAT DATE
-========================================================= */
-
 function formatDate(
     dateString
 ) {
@@ -3591,11 +3135,6 @@ function formatDate(
     );
 
 }
-
-
-/* =========================================================
-   FORMAT CALENDAR DATE
-========================================================= */
 
 function formatCalendarDate(
     dateString
@@ -3646,10 +3185,7 @@ function formatCalendarDate(
     `;
 
 }
-
-/* =========================================================
-   SAVE CALENDAR AS IMAGE
-========================================================= */
+// downlaoad
 
 const saveCalendarBtn = document.getElementById("saveCalendarBtn");
 
@@ -3664,58 +3200,38 @@ if (saveCalendarBtn) {
             return;
         }
 
-
         const originalText = saveCalendarBtn.textContent;
 
         saveCalendarBtn.textContent = "Saving...";
         saveCalendarBtn.disabled = true;
 
-
         try {
 
             const canvas = await html2canvas(calendar, {
-
                 backgroundColor: "#ffffff",
-
                 scale: 2,
-
                 useCORS: true,
-
                 allowTaint: true,
-
                 logging: false,
-
                 width: calendar.scrollWidth,
-
                 height: calendar.scrollHeight,
-
                 windowWidth: calendar.scrollWidth,
-
                 windowHeight: calendar.scrollHeight
 
             });
 
 
             const link = document.createElement("a");
-
             link.download = "Cinemalaya-2026-Festival-Calendar.png";
-
             link.href = canvas.toDataURL("image/png");
-
             link.click();
 
-
         } catch (error) {
-
             console.error("Calendar export failed:", error);
-
             alert("Unable to save the calendar image.");
 
         }
-
-
         saveCalendarBtn.textContent = originalText;
-
         saveCalendarBtn.disabled = false;
 
     });
