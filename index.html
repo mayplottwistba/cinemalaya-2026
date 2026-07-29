@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinemalaya 2026 Scheduler</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <header class="app-header">
+
+        <div class="logo">
+            Cinemalaya 2026
+            <span>/ SCHEDULER</span>
+        </div>
+
+        <div class="header-right">
+            <div class="festival-label">
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="movies-section">
+            <div class="section-header">
+                <div>
+                    <div class="section-title">
+                        FULL-LENGTH FILMS
+                    </div>
+                </div>
+            </div>
+
+            <div id="moviesGrid" class="movies-grid"></div>
+        </section>
+
+        <section class="scheduler-section">
+            <div class="section-header">
+                <div>
+                    <div class="section-title">
+                        Schedule Screening
+                    </div>
+
+                    <div class="section-subtitle">
+                        Select a film, date, cinema and available
+                        screening time.
+                    </div>
+                </div>
+            </div>
+
+            <div class="scheduler-layout">
+                <div class="scheduler-panel">
+                    <div class="panel-title">
+                        Add Screening
+                    </div>
+
+                    <form id="screeningForm">
+                        <div class="form-group">
+                            <label class="form-label" for="movieSelect">
+                                Film
+                            </label>
+
+                            <select id="movieSelect" class="form-control" required>
+
+                                <option value="">
+                                    Select Film
+                                </option>
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="dateInput">
+                                Screening Date
+                            </label>
+
+                            <input
+                                type="date"
+                                id="dateInput"
+                                class="form-control"
+                                min="2026-08-07"
+                                max="2026-08-16"
+                                required
+                            >
+
+                            <div class="date-help">
+                                FESTIVAL DATES: AUG 07 — AUG 16, 2026
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="form-label" for="cinemaSelect">
+                                Cinema
+                            </label>
+
+                            <select
+                                id="cinemaSelect"
+                                class="form-control"
+                                required
+                                disabled
+                            >
+
+                                <option value="">
+                                    Select Cinema
+                                </option>
+                            </select>
+                        </div>
+
+                        <div id="availabilityDisplay" class="availability">
+                            Select a film and date.
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="form-label" for="startSelect">
+                                Start time
+                            </label>
+
+                            <select
+                                id="startSelect"
+                                class="form-control"
+                                disabled
+                                required
+                            >
+
+                                <option value="">
+                                    Select available time
+                                </option>
+                            </select>
+                        </div>
+
+                        <div id="runtimeDisplay" class="runtime-info">
+
+                            <span>
+                                Runtime
+                            </span>
+                            <strong>
+                                —
+                            </strong>
+                        </div>
+
+                        <div class="end-time">
+                            <span>
+                                Auto end time
+                            </span>
+                            <strong id="endDisplay">
+                                —
+                            </strong>
+
+                        </div>
+
+                        <button
+                            type="submit"
+                            id="addScreeningButton"
+                            class="primary-button"
+                            disabled
+                        >
+                            + Add screening
+                        </button>
+                    </form>
+                </div>
+
+
+
+                <!-- =========================================
+                     INFORMATION PANEL
+                ========================================== -->
+
+                <div class="scheduler-info">
+
+
+                    <div class="scheduler-info-card">
+
+                        <div class="scheduler-info-number">
+                            01
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Film-specific availability
+                            </strong>
+
+                            <p>
+                                Cinemas and screening times are
+                                determined by the selected film's
+                                festival data.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="scheduler-info-card">
+
+                        <div class="scheduler-info-number">
+                            02
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Automatic end time
+                            </strong>
+
+                            <p>
+                                End time is automatically calculated
+                                using the film's runtime.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="scheduler-info-card">
+
+                        <div class="scheduler-info-number">
+                            03
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                No double booking
+                            </strong>
+
+                            <p>
+                                A cinema cannot have overlapping
+                                screenings.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SCHEDULED SCREENINGS
+        ================================================== -->
+
+        <section class="screenings-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <div class="section-title">
+                        Scheduled Screenings
+                    </div>
+
+                    <div class="section-subtitle">
+                        Current festival program
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="clearBtn"
+                    class="secondary-button"
+                    type="button"
+                >
+                    Clear Schedule
+                </button>
+
+            </div>
+
+
+            <div class="screenings-table">
+
+
+                <div class="screenings-header">
+
+                    <div>Film</div>
+                    <div>Date</div>
+                    <div>Cinema</div>
+                    <div>Time</div>
+                    <div></div>
+
+                </div>
+
+
+                <div id="screeningsList">
+
+                    <div class="empty-state">
+                        NO SCREENINGS YET
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+        <section class="calendar-section">
+            <div class="calendar-section-header">
+                <div>
+                    <div class="section-title">
+                        Festival Calendar
+                    </div>
+                    <div class="section-subtitle">
+                        August 7 — August 16 · All scheduled screenings
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="calendar"></div>
+        </section>
+
+        <button
+        id="saveCalendarBtn"
+        class="secondary-button"
+        type="button"
+    >
+        Save as image
+    </button>
+
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
