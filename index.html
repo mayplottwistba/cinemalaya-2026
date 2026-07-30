@@ -2,17 +2,17 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cinemalaya 2026 Scheduler</title>
+
     <link rel="icon" type="image/png" href="posters/alessandra.jpg">
     <link rel="stylesheet" href="style.css">
-
 </head>
-<body>
-    <header class="app-header">
 
+<body>
+
+    <header class="app-header">
         <div class="logo">
             Cinemalaya 2026
             <span>/ SCHEDULER</span>
@@ -20,7 +20,7 @@
 
         <div class="header-right">
             <div class="festival-label">
-                created by V | X: @mayplottwistba
+                created by V | @mayplottwistba
             </div>
         </div>
     </header>
@@ -39,6 +39,7 @@
         </section>
 
         <section class="scheduler-section">
+
             <div class="section-header">
                 <div>
                     <div class="section-title">
@@ -46,8 +47,7 @@
                     </div>
 
                     <div class="section-subtitle">
-                        Select a film, date, cinema and available
-                        screening time.
+                        Select a film, date, cinema and available screening time.
                     </div>
                 </div>
             </div>
@@ -65,12 +65,10 @@
                             </label>
 
                             <select id="movieSelect" class="form-control" required>
-
                                 <option value="">
                                     Select Film
                                 </option>
                             </select>
-
                         </div>
 
                         <div class="form-group">
@@ -88,13 +86,11 @@
                             >
 
                             <div class="date-help">
-                                FESTIVAL DATES: AUG 07 — AUG 16, 2026
+                                Cinemalaya dates: AUG 07 — AUG 16, 2026
                             </div>
-
                         </div>
 
                         <div class="form-group">
-
                             <label class="form-label" for="cinemaSelect">
                                 Cinema
                             </label>
@@ -105,7 +101,6 @@
                                 required
                                 disabled
                             >
-
                                 <option value="">
                                     Select Cinema
                                 </option>
@@ -117,145 +112,133 @@
                         </div>
 
                         <div class="form-group">
-
                             <label class="form-label" for="startSelect">
-                                Start time
+                                Start Time
                             </label>
 
                             <select
                                 id="startSelect"
                                 class="form-control"
-                                disabled
                                 required
+                                disabled
                             >
-
                                 <option value="">
                                     Select available time
                                 </option>
                             </select>
                         </div>
 
-                        <div id="runtimeDisplay" class="runtime-info">
-
-                            <span>
-                                Runtime
-                            </span>
-                            <strong>
-                                —
-                            </strong>
+                        <div class="runtime-info">
+                            <span>Runtime</span>
+                            <strong>—</strong>
                         </div>
 
                         <div class="end-time">
-                            <span>
-                                Auto end time
-                            </span>
-                            <strong id="endDisplay">
-                                —
-                            </strong>
-
+                            <span>Auto End Time</span>
+                            <strong id="endDisplay">—</strong>
                         </div>
 
                         <br>
+
                         <button
                             type="submit"
                             id="addScreeningButton"
                             class="primary-button"
                             disabled
                         >
-                            + Add screening
+                            + Add Screening
                         </button>
+
                     </form>
+
                 </div>
 
-                <div class="scheduler-info">
-                    <div class="scheduler-info-card">
-                        <div class="scheduler-info-number">
-                            01
-                        </div>
-                        <div>
-                            <strong>
-                                Film-specific availability
-                            </strong>
+                <div class="scheduler-content">
+                    <div class="scheduler-info">
+                        <div class="scheduler-info-card">
+                            <div class="scheduler-info-number">
+                                01
+                            </div>
 
-                            <p>
-                                Cinemas and screening times are
-                                determined by the selected film's
-                                festival data.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="scheduler-info-card">
-                        <div class="scheduler-info-number">
-                            02
-                        </div>
-                        <div>
-                            <strong>
-                                Automatic end time
-                            </strong>
-
-                            <p>
-                                End time is automatically calculated
-                                using the film's runtime.
-                            </p>
-
-                        </div>
-                    </div>
-                    
-                    <div class="scheduler-info-card">
-                        <div class="scheduler-info-number">
-                            03
+                            <div>
+                                <strong>
+                                    Film-specific availability
+                                </strong>
+                                <p>
+                                    Cinemas and screening times are determined by the selected film's festival data.
+                                </p>
+                            </div>
                         </div>
 
-                        <div>
-                            <strong>
-                                No double booking
-                            </strong>
-                            <p>
-                                A cinema cannot have overlapping
-                                screenings.
-                            </p>
+                        <div class="scheduler-info-card">
+                            <div class="scheduler-info-number">
+                                02
+                            </div>
+
+                            <div>
+                                <strong>
+                                    Automatic end time
+                                </strong>
+
+                                <p>
+                                    End time is automatically calculated using the film's runtime.
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <section class="screenings-section">
-            <div class="section-header">
-                <div>
-                    <div class="section-title">
-                        Scheduled Screenings
+                        <div class="scheduler-info-card">
+                            <div class="scheduler-info-number">
+                                03
+                            </div>
+
+                            <div>
+                                <strong>
+                                    No double booking
+                                </strong>
+
+                                <p>
+                                    A cinema cannot have overlapping screenings.
+                                </p>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div class="section-subtitle">
-                        Current festival program
-                    </div>
-                </div>
-                
-                <button
-                    id="clearBtn"
-                    class="secondary-button"
-                    type="button"
-                >
-                    Clear schedule
-                </button>
-            </div>
-            
-            <div class="screenings-table">
-                <div class="screenings-header">
+                    <section class="screenings-section">
+                        <div class="section-header">
+                            <div>
+                                <div class="section-title">
+                                    Scheduled Screenings
+                                </div>
+                            </div>
 
-                    <div>Film</div>
-                    <div>Date</div>
-                    <div>Cinema</div>
-                    <div>Time</div>
-                    <div></div>
-                </div>
+                            <button
+                                id="clearBtn"
+                                class="secondary-button"
+                                type="button"
+                            >
+                                Clear schedule
+                            </button>
 
-                <div id="screeningsList">
-                    <div class="empty-state">
-                        NO SCREENINGS YET
-                    </div>
+                        </div>
+
+                        <div class="screenings-table">
+
+                            <div class="screenings-header">
+                                <div>Film</div>
+                                <div>Date</div>
+                                <div>Cinema</div>
+                                <div>Time</div>
+                                <div></div>
+                            </div>
+
+                            <div id="screeningsList">
+                                <div class="empty-state">
+                                    NO SCREENINGS YET
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </section>
@@ -264,24 +247,31 @@
             <div class="calendar-section-header">
                 <div>
                     <div class="section-title">
-                        Festival Calendar
+                        Cinemalaya Calendar
                     </div>
+
                     <div class="section-subtitle">
                         August 7 — August 16 · All scheduled screenings
                     </div>
                 </div>
             </div>
-
             <div id="calendar"></div>
+
         </section>
 
-        <button id="saveCalendarBtn" class="secondary-button" type="button">
-        Save as image
+        <button
+            id="saveCalendarBtn"
+            class="secondary-button"
+            type="button"
+        >
+            Save as image
         </button>
-        
+
     </main>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="script.js"></script>
+
 </body>
+
 </html>
