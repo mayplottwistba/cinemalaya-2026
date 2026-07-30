@@ -4004,7 +4004,9 @@ function createCalendarCard(
 
         <div class="calendar-screening-time">
 
-            ${screening.date}
+            ${formatDate(
+                        screening.date
+                    )}
 
         </div>
 
