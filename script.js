@@ -2,6 +2,8 @@
    FESTIVAL SETTINGS
 ========================================================= */
 
+let currentMovieType = "full";
+
 const FESTIVAL_START =
     "2026-08-08";
 
@@ -31,7 +33,627 @@ const HOUR_HEIGHT =
 
 const movies = [
     {
+        id: 10,
+        type: "shorts",
+        set: "Set A",
+        title: "Hoy, Hoy, Ingat!",
+        director: "Norvin de los Santos",
+        poster: "posters/hoy-hoy-ingat.jpg",
+        color: "#32cd32",
+        runtime: 20,
+        plot:"Grief-striken in urban poor’s hell, a child eager for viral fame and his beautiful, terminal-ill brother embark on a rescue mission to take back a beloved family jeepney in order to survive."
+
+    },
+    {
+        id: 11,
+        type: "shorts",
+        set: "Set A",
+        title: "Silkscreen",
+        director: "Rey Anthony Villaverde",
+        poster: "posters/silkscreen.jpg",
+        color: "#32cd32",
+        runtime: 18,
+        plot:"A struggling shirt printer reconnects with his aging father, the former owner of their now-fading family business, as they confront the changes time has brought to their craft and relationship."
+
+
+    },
+    {
+        id: 12,
+        type: "shorts",
+        set: "Set A",
+        title: "Honey, My Love, So Sweet",
+        poster: "posters/honey-my-love.png",
+        color: "#32cd32",
+        director: "JT Trinidad",
+        runtime: 20,
+        plot:"In a decaying cinema in the heart of Manila, Life discovers first love through films and their new friend’s father."
+
+
+    },
+    {
+        id: 13,
+        type: "shorts",
+        set: "Set A",
+        title: "Runo!",
+        director: "Lysa Catolico and Jazmine Gin Pateña",
+        poster: "posters/runo.png",
+        color: "#32cd32",
+        runtime: 14,
+        plot:"Two hours after the apocalypse started in the Philippines, a silly Filipino stray rescue dog is dead set on finding her student owner through a long dangerous journey to defeat her worst enemy: an empty food bowl."
+    },
+    {
+        id: 14,
+        type: "shorts",
+        set: "Set B",
+        title: "Para-paraan",
+        director: "Mae Chan Li",
+        poster: "posters/para-paraan.jpg",
+        color: "#32cd32",
+        runtime: 10,
+        plot:"Kat, a wheelchair user, navigates a city where access is improvised and progress remains uneven. Para-Paraan (Finding a Way Through) turns silence into protest, revealing how every workaround conceals a larger truth. Kat’s silence is not defeat but defiance, a quiet hope that someday, resilience will no longer be the only way forward."
+    },
+    {
+        id: 15,
+        type: "shorts",
+        set: "Set B",
+        title: "The River Flows in Different Places",
+        director: "Lot-lot Hermosura",
+        poster: "posters/river.png",
+        color: "#ffc0cb",
+        runtime: 20,
+        plot:"Forced to flee Gaza, two Filipino-Palestinian mothers recount their repatriation journey to the Philippines and attempt to recreate the concept of home in a land both foreign and familiar."
+
+    },
+    {
+        id: 16,
+        type: "shorts",
+        set: "Set B",
+        title: "ELENITA ELENA ELAINE",
+        director: "Gabriela Serrano",
+        poster: "posters/elenita.jpg",
+        color: "#ffc0cb",
+        runtime: 20,
+        plot:"In sleepless Manila, where dreaming is outsourced to call centres, a fallen star appears on the eve of a woman’s departure to help her and her mother say goodbye."
+
+
+    },
+    {
+        id: 17,
+        type: "shorts",
+        set: "Set B",
+        title: "kung paano kakalas",
+        poster: "posters/kakalas.jpg",
+        director: "Joseph Vitali",
+        color: "#ffc0cb",
+        runtime: 20,
+        plot:"Edison, a street vendor in Manila, must sell all his remaining sherbet products before he can go home and celebrate Christmas. When his usual stall has no customers, he must find a way to look for buyers, chasing the chance to finally rest. Set against the holiday cheer, this documentary portrays the humanized persona of a young adult working hard to earn his right to celebrate."
+
+
+    },
+    {
+        id: 18,
+        type: "shorts",
+        set: "Set B",
+        title: "Sorbetes",
+        director: "Jennissie Gilbuena",
+        poster: "posters/ice-cream.png",
+        color: "#ffc0cb",
+        runtime: 12,
+        plot:"After a traumatic event, two brothers cope in their own ways, one of them by eating ice cream."
+    },
+    {
+        id: 19,
+        type: "shorts",
+        set: "Set B",
+        title: "The Keeper",
+        director: "Nolan Rae Fabular",
+        poster: "posters/keeper.jpg",
+        color: "#ffc0cb",
+        runtime: 8,
+        plot:"The story reveals the struggle of a trophy-room keeper to pursue an unwanted visitor around an otherwise overly organized and well-kept room - only to discover in the process that life was happening, under her very nose, despite her lack of attention to it."
+    },
+    {
         id: 1,
+        type: "full",
+        title: "2 Valid IDs PO",
+        set: "Full-length",
+        director: "Ma-an Asuncion-Dagnalan",
+        runtime: 90,
+        poster: "posters/2-valid-ids.jpeg",
+        color: "#0066ff",
+        plot: "Sylvia, a poor farmer, is unable to claim the money sent to her because she lacks the required two valid IDS. In her struggle to secure the IDs, Sylvia finds herself in a situation that challenges her character, beliefs, and morality."
+
+    },
+
+    {
+        id: 2,
+        type: "full",
+        title: "A.ni.mál",
+        set: "Full-length",
+        director: "Dustin Celestino",
+        runtime: 120,
+        poster: "posters/animal.jpg",
+        color: "#8a2be2",
+        plot: "In a provincial Philippine town, the naïve daughter of the mayor comes home with a video of a powerful family friend abusing his dog."
+
+    },
+
+
+    {
+        id: 3,
+        type: "full",
+        title: "Ganggang",
+        set: "Full-length",
+        director: "JL Burgos",
+        runtime: 89,
+        poster: "posters/ganggang.jpg",
+        color: "#00a878",
+        plot: "At the first clash of their fighting spiders, Ilay and Ten-ten knew they would go home as losers. Anton, the winner of the fight, will once again lord over their school. At the sideline is Mel, a newcomer and a city boy, watching the rowdy play in awe, unaware that soon he will become an ally of Ilay and Ten-ten against the real neighborhood bully."
+
+    },
+
+
+    {
+        id: 4,
+        type: "full",
+        title: "Hand of God",
+        set: "Full-length",
+        director: "Mark Duane Angos",
+        runtime: 106,
+        poster: "posters/hand-of-god.jpg",
+        color: "#f2c500",
+        plot: "In a remote village scarred by years of conflict, a young army lieutenant introduces football to children. As the game begins to heal wounds and rebuild trust, he forms a fragile bond with a child soldier — forcing both to choose between the innocence they’ve lost and the violent realities of war."
+    },
+
+
+    {
+        id: 5,
+        type: "full",
+        title: "Kaka sa Yawan",
+        set: "Full-length",
+        director: "Alpha Habin",
+        runtime: 90,
+        poster: "posters/kaka-sa-yawan.jpg",
+        color: "#e6004c",
+        plot:"A coming-of-age story of two friends in Mindoro – Niko, a Manila boy, and Ayan, a Mangyan. Their unique bond spans a whole summer of being introduced to each other’s culture and lifestyle, with Niko teaching Ayan how to read, who in turn teaches Niko how to swim."
+
+    },
+
+    {
+        id: 6,
+        type: "full",
+        title: "Mag-iina",
+        set: "Full-length",
+        director: "Giancarlo Abrahan",
+        runtime: 105,
+        poster: "posters/mag-iina.png",
+        color: "#ff4d00",
+        plot:"Near the 40th day of her estranged father’s death, a woman returns to her family’s ancestral home where three generations of women are bound together by grief, madness, and evil thicker than blood."
+
+    },
+
+    {
+        id: 7,
+        type: "full",
+        title: "Status: Rejected",
+        set: "Full-length",
+        director: "Vahn Leinard Pascual",
+        runtime: 90,
+        poster: "posters/status-rejected.png",
+        color: "#00a6a6",
+        plot:"Longing for love and the promise of a better life, a grandmother finds herself swept into an unexpected online romance that challenges her sense of worth, family, and the dreams she refuses to let go of."
+
+    },
+
+
+    {
+        id: 8,
+        type: "full",
+        title: "Tayo Lang Ang Nakakaalam",
+        set: "Full-length",
+        director: "David R. Corpuz",
+        runtime: 110,
+        poster: "posters/tayo-lang-ang-nakakaalam.jpg",
+        color: "#ff7a00",
+        plot:"Bound by a love kept in silence, a man struggles to remain seen within a family that once made him feel at home."
+
+    },
+
+
+    {
+        id: 9,
+        type: "full",
+        title: "Tirik",
+        set: "Full-length",
+        director: "May-i Guia Padilla",
+        runtime: 90,
+        poster: "posters/tirik.jpg",
+        color: "#5555ff",
+        plot:"Paring Bert, a priest, and his parishioner, Santos, a taxi driver, embark on a gritty journey to reconcile their moral conflicts while they elude an assassination attempt."
+
+    }
+
+];
+
+const moviesSet = [
+    {
+        id: 10,
+        type: "shorts",
+        title: "Shorts Set A",
+        runtime: 82,
+        color: "#32cd32",
+        availability: [
+            {
+                date: "2026-08-07",
+                cinema: "Shangri-La",
+                times: ["14:30"]
+            },
+            {
+                date: "2026-08-07",
+                cinema: "Gateway",
+                times: ["12:00", "18:00"]
+            },
+
+            {
+                date: "2026-08-08",
+                cinema: "Shangri-La",
+                times: ["11:30"]
+            },
+            {
+                date: "2026-08-08",
+                cinema: "Ayala - Manila Bay",
+                times: ["20:30"]
+            },
+            {
+                date: "2026-08-08",
+                cinema: "Glorietta",
+                times: ["20:30"]
+            },
+            {
+                date: "2026-08-08",
+                cinema: "Gateway",
+                times: ["12:00"]
+            },
+
+            {
+                date: "2026-08-09",
+                cinema: "Circuit",
+                times: ["17:30"]
+            },
+            {
+                date: "2026-08-09",
+                cinema: "Market! Market!",
+                times: ["17:30"]
+            },
+            {
+                date: "2026-08-09",
+                cinema: "Trinoma",
+                times: ["17:30"]
+            },
+            {
+                date: "2026-08-09",
+                cinema: "Gateway",
+                times: ["15:00", "18:00"]
+            },
+
+            {
+                date: "2026-08-10",
+                cinema: "Shangri-La",
+                times: ["17:30"]
+            },
+            {
+                date: "2026-08-10",
+                cinema: "Gateway",
+                times: ["12:00"]
+            },
+
+            {
+                date: "2026-08-11",
+                cinema: "Shangri-La",
+                times: ["20:30"]
+            },
+            {
+                date: "2026-08-11",
+                cinema: "Gateway",
+                times: ["12:00"]
+            },
+
+            {
+                date: "2026-08-12",
+                cinema: "Shangri-La",
+                times: ["14:30", "17:30"]
+            },
+            {
+                date: "2026-08-12",
+                cinema: "Glorietta",
+                times: ["14:30"]
+            },
+            {
+                date: "2026-08-12",
+                cinema: "Ayala - Manila Bay",
+                times: ["14:30"]
+            },
+            {
+                date: "2026-08-12",
+                cinema: "Circuit",
+                times: ["14:30"]
+            },
+            {
+                date: "2026-08-12",
+                cinema: "Market! Market!",
+                times: ["14:30"]
+            },
+            {
+                date: "2026-08-12",
+                cinema: "Trinoma",
+                times: ["14:30"]
+            },
+            {
+                date: "2026-08-12",
+                cinema: "Gateway",
+                times: ["12:00", "21:00"]
+            },
+
+            {
+                date: "2026-08-13",
+                cinema: "Shangri-La",
+                times: ["11:30", "20:30"]
+            },
+            {
+                date: "2026-08-13",
+                cinema: "Gateway",
+                times: ["12:00", "15:00", "21:00"]
+            },
+
+            {
+                date: "2026-08-14",
+                cinema: "Shangri-La",
+                times: ["11:30"]
+            },
+            {
+                date: "2026-08-14",
+                cinema: "Ayala - Manila Bay",
+                times: ["11:30"]
+            },
+            {
+                date: "2026-08-14",
+                cinema: "Glorietta",
+                times: ["11:30"]
+            },
+            {
+                date: "2026-08-14",
+                cinema: "Gateway",
+                times: ["15:00", "18:00"]
+            },
+
+            {
+                date: "2026-08-15",
+                cinema: "Shangri-La",
+                times: ["11:30"]
+            },
+            {
+                date: "2026-08-15",
+                cinema: "Circuit",
+                times: ["11:30"]
+            },
+            {
+                date: "2026-08-15",
+                cinema: "Market! Market!",
+                times: ["11:30"]
+            },
+            {
+                date: "2026-08-15",
+                cinema: "Trinoma",
+                times: ["11:30"]
+            },
+
+            {
+                date: "2026-08-16",
+                cinema: "Shangri-La",
+                times: ["11:30"]
+            },
+            {
+                date: "2026-08-16",
+                cinema: "Gateway",
+                times: ["12:00"]
+            }
+
+        ]
+
+    },
+    {
+        id: 11,
+        type: "shorts",
+        title: "Shorts Set B",
+        color: "#ffc0cb",
+        runtime: 80,
+        availability: [
+            {
+                date: "2026-08-07",
+                cinema: "Shangri-La",
+                times: ["11:30"]
+            },
+            {
+                date: "2026-08-07",
+                cinema: "Gateway",
+                times: ["12:00", "15:00"]
+            },
+
+            {
+                date: "2026-08-08",
+                cinema: "Shangri-La",
+                times: ["14:30"]
+            },
+            {
+                date: "2026-08-08",
+                cinema: "Circuit",
+                times: ["20:30"]
+            },
+            {
+                date: "2026-08-08",
+                cinema: "Market! Market!",
+                times: ["20:30"]
+            },
+            {
+                date: "2026-08-08",
+                cinema: "Trinoma",
+                times: ["20:30"]
+            },
+            {
+                date: "2026-08-08",
+                cinema: "Gateway",
+                times: ["15:00", "21:00"]
+            },
+
+            {
+                date: "2026-08-09",
+                cinema: "Shangri-La",
+                times: ["17:30"]
+            },
+            {
+                date: "2026-08-09",
+                cinema: "Gateway",
+                times: ["12:00", "21:00"]
+            },
+
+            {
+                date: "2026-08-10",
+                cinema: "Shangri-La",
+                times: ["20:30"]
+            },
+            {
+                date: "2026-08-10",
+                cinema: "Ayala - Manila Bay",
+                times: ["17:30"]
+            },
+            {
+                date: "2026-08-10",
+                cinema: "Glorietta",
+                times: ["17:30"]
+            },
+            {
+                date: "2026-08-10",
+                cinema: "Gateway",
+                times: ["18:00"]
+            },
+
+            {
+                date: "2026-08-11",
+                cinema: "Gateway",
+                times: ["12:00"]
+            },
+
+            {
+                date: "2026-08-12",
+                cinema: "Shangri-La",
+                times: ["11:30", "20:30"]
+            },
+            {
+                date: "2026-08-12",
+                cinema: "Gateway",
+                times: ["12:00"]
+            },
+
+            {
+                date: "2026-08-13",
+                cinema: "Shangri-La",
+                times: ["17:30"]
+            },
+            {
+                date: "2026-08-13",
+                cinema: "Ayala - Manila Bay",
+                times: ["11:30"]
+            },
+            {
+                date: "2026-08-13",
+                cinema: "Glorietta",
+                times: ["11:30"]
+            },
+            {
+                date: "2026-08-13",
+                cinema: "Circuit",
+                times: ["11:30"]
+            },
+            {
+                date: "2026-08-13",
+                cinema: "Market! Market!",
+                times: ["11:30"]
+            },
+            {
+                date: "2026-08-13",
+                cinema: "Trinoma",
+                times: ["11:30"]
+            },
+            {
+                date: "2026-08-13",
+                cinema: "Gateway",
+                times: ["15:00"]
+            },
+
+            {
+                date: "2026-08-14",
+                cinema: "Shangri-La",
+                times: ["11:30", "17:30"]
+            },
+            {
+                date: "2026-08-14",
+                cinema: "Circuit",
+                times: ["14:30"]
+            },
+            {
+                date: "2026-08-14",
+                cinema: "Market! Market!",
+                times: ["14:30"]
+            },
+            {
+                date: "2026-08-14",
+                cinema: "Trinoma",
+                times: ["14:30"]
+            },
+            {
+                date: "2026-08-14",
+                cinema: "Gateway",
+                times: ["12:00"]
+            },
+
+            {
+                date: "2026-08-15",
+                cinema: "Shangri-La",
+                times: ["11:30"]
+            },
+            {
+                date: "2026-08-15",
+                cinema: "Ayala - Manila Bay",
+                times: ["14:30"]
+            },
+            {
+                date: "2026-08-15",
+                cinema: "Glorietta",
+                times: ["14:30"]
+            },
+            {
+                date: "2026-08-15",
+                cinema: "Gateway",
+                times: ["12:00", "15:00"]
+            },
+
+            {
+                date: "2026-08-16",
+                cinema: "Shangri-La",
+                times: ["20:30"]
+            },
+            {
+                date: "2026-08-16",
+                cinema: "Gateway",
+                times: ["18:00"]
+            }
+
+        ]
+
+    },
+    {
+        id: 1,
+        type: "full",
         title: "2 Valid IDs",
         director: "Ma-an Asuncion-Dagnalan",
         runtime: 90,
@@ -270,6 +892,7 @@ const movies = [
 
     {
         id: 2,
+        type: "full",
         title: "A.ni.mál",
         director: "Dustin Celestino",
         runtime: 120,
@@ -453,6 +1076,7 @@ const movies = [
 
     {
         id: 3,
+        type: "full",
         title: "Ganggang",
         director: "JL Burgos",
         runtime: 89,
@@ -647,6 +1271,7 @@ const movies = [
 
     {
         id: 4,
+        type: "full",
         title: "Hand of God",
         director: "Mark Duane Angos",
         runtime: 106,
@@ -836,13 +1461,14 @@ const movies = [
 
     {
         id: 5,
+        type: "full",
         title: "Kaka sa Yawan",
         director: "Alpha Habin",
         runtime: 90,
         poster: "posters/kaka-sa-yawan.jpg",
         color: "#e6004c",
         plot:"A coming-of-age story of two friends in Mindoro – Niko, a Manila boy, and Ayan, a Mangyan. Their unique bond spans a whole summer of being introduced to each other’s culture and lifestyle, with Niko teaching Ayan how to read, who in turn teaches Niko how to swim.",
-       availability: [
+        availability: [
             {
                 date: "2026-08-07",
                 cinema: "Gateway",
@@ -1018,13 +1644,14 @@ const movies = [
 
     {
         id: 6,
+        type: "full",
         title: "Mag-iina",
         director: "Giancarlo Abrahan",
         runtime: 105,
         poster: "posters/mag-iina.png",
         color: "#ff4d00",
-        plot:"Near the 40th day of her estranged father’s death, a woman returns to her family’s ancestral home where three generations of women are bound together by grief, madness, and evil thicker than blood.", 
-       availability: [
+        plot:"Near the 40th day of her estranged father’s death, a woman returns to her family’s ancestral home where three generations of women are bound together by grief, madness, and evil thicker than blood.",
+        availability: [
             {
                 date: "2026-08-07",
                 cinema: "Gateway",
@@ -1268,6 +1895,7 @@ const movies = [
 
     {
         id: 7,
+        type: "full",
         title: "Status: Rejected",
         director: "Vahn Leinard Pascual",
         runtime: 90,
@@ -1451,6 +2079,7 @@ const movies = [
 
     {
         id: 8,
+        type: "full",
         title: "Tayo Lang Ang Nakakaalam",
         director: "David R. Corpuz",
         runtime: 110,
@@ -1640,9 +2269,10 @@ const movies = [
 
     {
         id: 9,
+        type: "full",
         title: "Tirik",
         director: "May-i Guia Padilla",
-        runtime: 91,
+        runtime: 90,
         poster: "posters/tirik.jpg",
         color: "#5555ff",
         plot:"Paring Bert, a priest, and his parishioner, Santos, a taxi driver, embark on a gritty journey to reconcile their moral conflicts while they elude an assassination attempt.",
@@ -1944,8 +2574,9 @@ function renderMovies() {
     moviesGrid.innerHTML = "";
 
 
-    movies.forEach(
-        (movie, index) => {
+    movies
+    .filter(movie => movie.type === currentMovieType)
+    .forEach((movie, index) => {
 
             const card =
                 document.createElement(
@@ -1973,16 +2604,6 @@ function renderMovies() {
                     <div class="movie-card-info">
 
 
-                        <div class="movie-number">
-
-                            FILM
-                            ${String(
-                                index + 1
-                            ).padStart(2, "0")}
-
-                        </div>
-
-
                         <div class="movie-title">
 
                             ${movie.title}
@@ -2000,6 +2621,11 @@ function renderMovies() {
                         <div class="movie-director-name">
 
                             ${movie.director}
+
+                        </div>
+                        <div class="movie-set-name">
+
+                            ${movie.set}
 
                         </div>
 
@@ -2081,8 +2707,8 @@ function populateMovieSelect() {
     `;
 
 
-    movies.forEach(
-        movie => {
+    moviesSet.forEach(
+        moviesSet => {
 
             const option =
                 document.createElement(
@@ -2091,11 +2717,11 @@ function populateMovieSelect() {
 
 
             option.value =
-                movie.id;
+                moviesSet.id;
 
 
             option.textContent =
-                movie.title;
+                moviesSet.title;
 
 
             movieSelect.appendChild(
@@ -3420,7 +4046,7 @@ function getSelectedMovie() {
     }
 
 
-    return movies.find(
+    return moviesSet.find(
         movie =>
             movie.id === id
     );
@@ -3737,9 +4363,33 @@ if (saveCalendarBtn) {
 
 
         saveCalendarBtn.textContent = originalText;
-
         saveCalendarBtn.disabled = false;
 
     });
 
 }
+
+const showFullBtn = document.getElementById("showFullBtn");
+const showShortsBtn = document.getElementById("showShortsBtn");
+
+showFullBtn.addEventListener("click", () => {
+
+    currentMovieType = "full";
+
+    showFullBtn.classList.add("active");
+    showShortsBtn.classList.remove("active");
+
+    renderMovies();
+
+});
+
+showShortsBtn.addEventListener("click", () => {
+
+    currentMovieType = "shorts";
+
+    showShortsBtn.classList.add("active");
+    showFullBtn.classList.remove("active");
+
+    renderMovies();
+
+});
