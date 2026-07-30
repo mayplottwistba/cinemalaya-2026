@@ -837,7 +837,7 @@ const movies = [
     {
         id: 5,
         title: "Kaka sa Yawan",
-        director: "Alpha Habin",
+        director: "Alpha Habon",
         runtime: 90,
         poster: "posters/kaka-sa-yawan.jpg",
         color: "#e6004c",
