@@ -1642,7 +1642,7 @@ const movies = [
         id: 9,
         title: "Tirik",
         director: "May-i Guia Padilla",
-        runtime: 90,
+        runtime: 91,
         poster: "posters/tirik.jpg",
         color: "#5555ff",
         plot:"Paring Bert, a priest, and his parishioner, Santos, a taxi driver, embark on a gritty journey to reconcile their moral conflicts while they elude an assassination attempt.",
