@@ -155,7 +155,7 @@ const movies = [
     {
         id: 1,
         type: "full",
-        title: "2 Valid IDs PO",
+        title: "2 Valid IDs",
         set: "Full-length",
         director: "Ma-an Asuncion-Dagnalan",
         runtime: 90,
