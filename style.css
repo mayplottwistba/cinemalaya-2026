@@ -62,7 +62,7 @@ button {
     width: 100%;
     max-width: 1650px;
     margin: 0 auto;
-    padding: 30px;
+    padding: 20px;
 }
 
 .section-header {
@@ -504,7 +504,7 @@ button {
     padding:
         3px
         5px
-        10px
+        5px
         3px;
 }
 .calendar::-webkit-scrollbar {
@@ -517,7 +517,7 @@ button {
     background: #111;
 }
 .calendar-grid {
-    min-width: 1650px;
+    max-width: 1650px;
     border: 2px solid #111;
     background: white;
 }
