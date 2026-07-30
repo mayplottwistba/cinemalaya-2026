@@ -497,9 +497,6 @@ button {
 
 
 /* calendar */ 
-/* =========================================================
-   CALENDAR
-========================================================= */
 
 .calendar-section {
     margin-bottom: 60px;
@@ -555,111 +552,122 @@ button {
 
 
 .calendar-header > div {
-
     min-height: 52px;
-
     display: flex;
-
     align-items: center;
-
     padding: 10px;
-
     border-right: 1px solid #444;
-
     font-family: monospace;
-
     font-size: 9px;
-
     font-weight: bold;
-
     text-transform: uppercase;
-
 }
 
 
 .calendar-header > div:first-child {
-
     background: #222;
-
 }
 
 
 .calendar-body {
-
     display: grid;
-
 }
 
 .calendar-time-column {
-
     position: relative;
-
     background: #f4f4f0;
-
     border-right: 2px solid #111;
-
 }
 
 
 .time-label {
-
     display: flex;
-
     align-items: flex-start;
-
     padding: 8px 7px;
-
     border-bottom: 1px solid #ddd;
-
     font-family: monospace;
-
     font-size: 9px;
-
     font-weight: bold;
-
     color: #555;
-
 }
 
-
-
 .calendar-date-column {
-
     position: relative;
-
     min-width: 100px;
-
     background: white;
-
     border-right: 1px solid #ddd;
-
     overflow: visible;
-
 }
 
 
 .calendar-date-column:last-child {
-
     border-right: none;
-
 }
-
 
 .calendar-hour-line {
-
     position: absolute;
-
     left: 0;
-
     right: 0;
-
     height: 1px;
-
     background: #e5e5e1;
-
     z-index: 0;
-
 }
+
+/* screenings */ 
+.calendar-screening {
+    position: absolute;
+    left: 5px;
+    right: 5px;
+    padding: 8px 9px;
+    border: 2px solid #111;
+    background: white;
+    color: #111;
+    box-shadow: 3px 3px 0 #111;
+    overflow: hidden;
+    z-index: 5;
+    cursor: pointer;
+    transition:
+        transform 0.12s ease,
+        box-shadow 0.12s ease;
+}
+.calendar-screening:hover {
+    transform:
+        translate(
+            -2px,
+            -2px
+        );
+    box-shadow: 5px 5px 0 #111;
+}
+.calendar-screening-title {
+    font-size: 11px;
+    font-weight: 900;
+    line-height: 1.1;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.calendar-cinema {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 3px 5px;
+    background: #111;
+    color: white;
+    font-family: monospace;
+    font-size: 7px;
+    font-weight: bold;
+    line-height: 1;
+    text-transform: uppercase;
+}
+.calendar-screening-time {
+    margin-top: 5px;
+    font-family: monospace;
+    font-size: 8px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+
 
 
 /* end of calendar */ 
