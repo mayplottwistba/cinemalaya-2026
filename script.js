@@ -2149,9 +2149,9 @@ dateInput.addEventListener(
 
             resetSchedulingFields();
 
-            alert(
-                "Please select a festival date between August 7 and August 16, 2026."
-            );
+            //alert(
+               // "Please select a festival date between August 7 and August 16, 2026."
+            // );
 
             return;
 
