@@ -4002,6 +4002,12 @@ function createCalendarCard(
 
         </div>
 
+        <div class="calendar-screening-time">
+
+            ${screening.date}
+
+        </div>
+
 
         <div class="calendar-screening-time">
 
