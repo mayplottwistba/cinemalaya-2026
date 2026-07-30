@@ -3686,58 +3686,58 @@ if (saveCalendarBtn) {
             return;
         }
 
-
-        const originalText = saveCalendarBtn.textContent;
-
         saveCalendarBtn.textContent = "Saving...";
         saveCalendarBtn.disabled = true;
-
 
         try {
 
             const canvas = await html2canvas(calendar, {
-
                 backgroundColor: "#ffffff",
-
                 scale: 2,
-
                 useCORS: true,
-
-                allowTaint: true,
-
                 logging: false,
 
                 width: calendar.scrollWidth,
-
                 height: calendar.scrollHeight,
 
                 windowWidth: calendar.scrollWidth,
-
                 windowHeight: calendar.scrollHeight
-
             });
 
 
-            const link = document.createElement("a");
+            // Convert to PNG
+            canvas.toBlob((blob) => {
 
-            link.download = "Cinemalaya-2026-Festival-Calendar.png";
+                if (!blob) {
+                    alert("Unable to create image.");
+                    return;
+                }
 
-            link.href = canvas.toDataURL("image/png");
+                const url = URL.createObjectURL(blob);
 
-            link.click();
+                const link = document.createElement("a");
+
+                link.href = url;
+                link.download = "Cinemalaya-2026-Calendar.png";
+
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                URL.revokeObjectURL(url);
+
+            }, "image/png");
 
 
         } catch (error) {
 
-            console.error("Calendar export failed:", error);
+            console.error(error);
 
-            alert("Unable to save the calendar image.");
+            alert("Unable to save calendar image.");
 
         }
 
-
-        saveCalendarBtn.textContent = originalText;
-
+        saveCalendarBtn.textContent = "↓ Save Calendar as Image";
         saveCalendarBtn.disabled = false;
 
     });
