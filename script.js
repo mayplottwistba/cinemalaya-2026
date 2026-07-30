@@ -837,11 +837,11 @@ const movies = [
     {
         id: 5,
         title: "Kaka sa Yawan",
-        director: "Alpha Habon",
+        director: "Alpha Habin",
         runtime: 90,
         poster: "posters/kaka-sa-yawan.jpg",
         color: "#e6004c",
-        plot:"A coming-of-age story of two friends in Mindoro – Niko, a Manila boy, and Ayan, a Mangyan. Their unique bond spans a whole summer of being introduced to each other’s culture and lifestyle, with Niko teaching Ayan how to read, who in turn teaches Niko how to swim.",
+        plot:"Near the 40th day of her estranged father’s death, a woman returns to her family’s ancestral home where three generations of women are bound together by grief, madness, and evil thicker than blood.",
         availability: [
             {
                 date: "2026-08-07",
@@ -1023,7 +1023,7 @@ const movies = [
         runtime: 105,
         poster: "posters/mag-iina.png",
         color: "#ff4d00",
-        plot:"Near the 40th day of her estranged father’s death, a woman returns to her family’s ancestral home where three generations of women are bound together by grief, madness, and evil thicker than blood.",
+        plot:"A coming-of-age story of two friends in Mindoro – Niko, a Manila boy, and Ayan, a Mangyan. Their unique bond spans a whole summer of being introduced to each other’s culture and lifestyle, with Niko teaching Ayan how to read, who in turn teaches Niko how to swim.",
         availability: [
             {
                 date: "2026-08-07",
@@ -1642,7 +1642,7 @@ const movies = [
         id: 9,
         title: "Tirik",
         director: "May-i Guia Padilla",
-        runtime: 91,
+        runtime: 90,
         poster: "posters/tirik.jpg",
         color: "#5555ff",
         plot:"Paring Bert, a priest, and his parishioner, Santos, a taxi driver, embark on a gritty journey to reconcile their moral conflicts while they elude an assassination attempt.",
@@ -2149,9 +2149,9 @@ dateInput.addEventListener(
 
             resetSchedulingFields();
 
-            //alert(
-               // "Please select a festival date between August 7 and August 16, 2026."
-            // );
+            alert(
+                "Please select a festival date between August 7 and August 16, 2026."
+            );
 
             return;
 
@@ -2269,7 +2269,7 @@ function updateRuntime() {
             </span>
 
             <strong>
-                —
+                ${movie.runtime} MIN
             </strong>
 
         `;
@@ -3058,7 +3058,7 @@ function renderCalendar() {
     header.style.gridTemplateColumns =
         `80px repeat(
             ${dates.length},
-            minmax(150px, 1fr)
+            minmax(100px, 1fr)
         )`;
 
 
@@ -3122,7 +3122,7 @@ function renderCalendar() {
     body.style.gridTemplateColumns =
         `80px repeat(
             ${dates.length},
-            minmax(150px, 1fr)
+            minmax(100px, 1fr)
         )`;
 
 
@@ -3686,58 +3686,58 @@ if (saveCalendarBtn) {
             return;
         }
 
+
+        const originalText = saveCalendarBtn.textContent;
+
         saveCalendarBtn.textContent = "Saving...";
         saveCalendarBtn.disabled = true;
+
 
         try {
 
             const canvas = await html2canvas(calendar, {
+
                 backgroundColor: "#ffffff",
+
                 scale: 2,
+
                 useCORS: true,
+
+                allowTaint: true,
+
                 logging: false,
 
                 width: calendar.scrollWidth,
+
                 height: calendar.scrollHeight,
 
                 windowWidth: calendar.scrollWidth,
+
                 windowHeight: calendar.scrollHeight
+
             });
 
 
-            // Convert to PNG
-            canvas.toBlob((blob) => {
+            const link = document.createElement("a");
 
-                if (!blob) {
-                    alert("Unable to create image.");
-                    return;
-                }
+            link.download = "Cinemalaya-2026-Festival-Calendar.png";
 
-                const url = URL.createObjectURL(blob);
+            link.href = canvas.toDataURL("image/png");
 
-                const link = document.createElement("a");
-
-                link.href = url;
-                link.download = "Cinemalaya-2026-Calendar.png";
-
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-
-                URL.revokeObjectURL(url);
-
-            }, "image/png");
+            link.click();
 
 
         } catch (error) {
 
-            console.error(error);
+            console.error("Calendar export failed:", error);
 
-            alert("Unable to save calendar image.");
+            alert("Unable to save the calendar image.");
 
         }
 
-        saveCalendarBtn.textContent = "Save as image";
+
+        saveCalendarBtn.textContent = originalText;
+
         saveCalendarBtn.disabled = false;
 
     });
