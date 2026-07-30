@@ -841,8 +841,8 @@ const movies = [
         runtime: 90,
         poster: "posters/kaka-sa-yawan.jpg",
         color: "#e6004c",
-        plot:"Near the 40th day of her estranged father’s death, a woman returns to her family’s ancestral home where three generations of women are bound together by grief, madness, and evil thicker than blood.",
-        availability: [
+        plot:"A coming-of-age story of two friends in Mindoro – Niko, a Manila boy, and Ayan, a Mangyan. Their unique bond spans a whole summer of being introduced to each other’s culture and lifestyle, with Niko teaching Ayan how to read, who in turn teaches Niko how to swim.",
+       availability: [
             {
                 date: "2026-08-07",
                 cinema: "Gateway",
@@ -1023,8 +1023,8 @@ const movies = [
         runtime: 105,
         poster: "posters/mag-iina.png",
         color: "#ff4d00",
-        plot:"A coming-of-age story of two friends in Mindoro – Niko, a Manila boy, and Ayan, a Mangyan. Their unique bond spans a whole summer of being introduced to each other’s culture and lifestyle, with Niko teaching Ayan how to read, who in turn teaches Niko how to swim.",
-        availability: [
+        plot:"Near the 40th day of her estranged father’s death, a woman returns to her family’s ancestral home where three generations of women are bound together by grief, madness, and evil thicker than blood.", 
+       availability: [
             {
                 date: "2026-08-07",
                 cinema: "Gateway",
