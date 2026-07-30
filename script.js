@@ -84,7 +84,7 @@ const movies = [
     {
         id: 14,
         type: "shorts",
-        set: "Set B",
+        set: "Set A",
         title: "Para-paraan",
         director: "Mae Chan Li",
         poster: "posters/para-paraan.jpg",
