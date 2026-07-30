@@ -198,6 +198,24 @@ button {
     font-weight: bold;
     line-height: 1.2;
 }
+.movie-plot {
+    margin-bottom: 3px;
+    font-family: monospace;
+    font-size: 8px;
+    font-weight: bold;
+    color: #888;
+    text-transform: uppercase;
+}
+.movie-plot-summary {
+    margin-top: 10px;
+    max-width: 175px;
+    font-size: 10px;
+    font-weight: lighter;
+    line-height: 1.2;
+    text-align: justify;
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
 .movie-runtime {
     margin-top: auto;
     padding-top: 12px;
@@ -251,6 +269,15 @@ button {
         1fr;
     gap: 25px;
     align-items: start;
+}
+.scheduler-content{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+}
+
+.screenings-section{
+    margin-bottom:0;
 }
 .scheduler-panel {
     background: white;
@@ -360,14 +387,13 @@ button {
         );
     gap: 12px;
 }
-.sched-info {
+.scheduler-info-bot {
     display: grid;
     grid-template-columns:
         repeat(
             1,
             1fr
         );
-    gap: 12px;
 }
 .scheduler-info-card {
     display: flex;
@@ -508,7 +534,7 @@ button {
     padding: 10px;
     border-right: 1px solid #444;
     font-family: monospace;
-    font-size: 9px;
+    font-size: 11px;
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -531,7 +557,7 @@ button {
     padding: 8px 7px;
     border-bottom: 1px solid #ddd;
     font-family: monospace;
-    font-size: 9px;
+    font-size: 11px;
     font-weight: bold;
     color: #555;
 }
@@ -611,6 +637,7 @@ button {
     font-weight: bold;
     white-space: nowrap;
 }
+
 
 /* end of calendar */ 
 
