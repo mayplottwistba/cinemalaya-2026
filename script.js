@@ -3737,7 +3737,7 @@ if (saveCalendarBtn) {
 
         }
 
-        saveCalendarBtn.textContent = "↓ Save Calendar as Image";
+        saveCalendarBtn.textContent = "Save as image";
         saveCalendarBtn.disabled = false;
 
     });
